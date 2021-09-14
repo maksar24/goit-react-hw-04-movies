@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { fetchTrendingMovies } from "../API";
 import { Link } from "react-router-dom";
+import { List } from "../List/List";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchMoviesList = async () => {
@@ -24,21 +26,13 @@ export default function HomePage() {
     fetchMoviesList();
   }, [page]);
 
+  const nextPage = () => setCurrentPage(currentPage + 1);
+
   return (
-    <div>
+    <>
       {movies.length > 0 && !error && (
-        <ul>
-          {movies.map(({ id }) => (
-            <li>
-              <Link
-                to={{
-                  pathname: `/movies/${id}`,
-                }}
-              ></Link>
-            </li>
-          ))}
-        </ul>
+        <List collection={movies} actionButton={nextPage} />
       )}
-    </div>
+    </>
   );
 }
