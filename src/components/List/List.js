@@ -14,3 +14,8 @@ export const List = ({ collection, actionButton }) => {
     </div>
   );
 };
+
+List.propTypes = {
+  collection: PropTypes.array.isRequired,
+  actionButton: PropTypes.func.isRequired,
+};

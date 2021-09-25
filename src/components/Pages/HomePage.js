@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { fetchTrendingMovies } from "../API";
-import { Link } from "react-router-dom";
 import { List } from "../List/List";
+import { CustomLoader } from "../Loader/Loader";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchMoviesList = async () => {
       try {
-        const moviesPageList = await fetchTrendingMovies(page);
+        setLoading(true);
+        const moviesPageList = await fetchTrendingMovies(currentPage);
 
         setMovies((prevMovies) => [...prevMovies, ...moviesPageList]);
 
@@ -21,15 +22,29 @@ export default function HomePage() {
         }
       } catch (error) {
         setError("Whoops, something went wrong. Enter your request again");
+      } finally {
+        if (currentPage > 1) {
+          scroll();
+        }
+        setLoading(false);
       }
     };
     fetchMoviesList();
-  }, [page]);
+  }, [currentPage]);
+
+  const scroll = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  };
 
   const nextPage = () => setCurrentPage(currentPage + 1);
 
   return (
     <>
+      {loading && <CustomLoader />}
+      {error && <p>{error}</p>}
       {movies.length > 0 && !error && (
         <List collection={movies} actionButton={nextPage} />
       )}
