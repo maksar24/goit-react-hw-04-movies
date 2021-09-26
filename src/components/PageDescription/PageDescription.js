@@ -1,11 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 import img from "../../Image/BasicImage.jpg";
 
 export const PageDescription = ({ movie }) => {
   const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
-  const { title, poster_path, release_date, overview, genres } = movie;
-  console.log("movie2", movie);
+  const { title, poster_path, release_date, overview, genres, popularity } =
+    movie;
 
   return (
     <>
@@ -16,6 +15,7 @@ export const PageDescription = ({ movie }) => {
         <h2>
           {title} ({release_date.slice(0, 4)})
         </h2>
+        <p>User Score: {Math.round(popularity)}%</p>
         <h3>Overview</h3>
         <p>{overview}</p>
         <h4>Genres</h4>

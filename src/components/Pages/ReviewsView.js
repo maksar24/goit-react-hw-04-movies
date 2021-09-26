@@ -15,6 +15,9 @@ export default function ReviewsView() {
 
     fetchMovieReviews(movieId)
       .then((reviews) => {
+        if (reviews.length === 0) {
+          setError("We don`t have any reviews for this movie.");
+        }
         setReviews(reviews);
       })
       .catch((error) => {
