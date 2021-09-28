@@ -14,8 +14,6 @@ export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
 
-  console.log(location);
-  console.log("history", history);
   const searchMovie = new URLSearchParams(location.search).get("query");
 
   useEffect(() => {
@@ -79,7 +77,11 @@ export default function MoviesPage() {
       {loading && <CustomLoader />}
       {error && <p>{error}</p>}
       {movies.length > 0 && !error && (
-        <List collection={movies} actionButton={nextPage} />
+        <List
+          collection={movies}
+          actionButton={nextPage}
+          titleButton={"Load more"}
+        />
       )}
     </>
   );

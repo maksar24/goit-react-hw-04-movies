@@ -46,7 +46,11 @@ export default function HomePage() {
       {loading && <CustomLoader />}
       {error && <p>{error}</p>}
       {movies.length > 0 && !error && (
-        <List collection={movies} actionButton={nextPage} />
+        <List
+          collection={movies}
+          actionButton={nextPage}
+          titleButton={"Load more"}
+        />
       )}
     </>
   );

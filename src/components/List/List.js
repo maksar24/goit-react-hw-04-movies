@@ -4,14 +4,14 @@ import { Button } from "../Button/Button";
 import PropTypes from "prop-types";
 import styles from "./List.module.css";
 
-export const List = ({ collection, actionButton }) => {
+export const List = ({ collection, actionButton, titleButton }) => {
   return (
     <div className={styles.Container}>
       <ul className={styles.List}>
         <ListItem collection={collection} />
       </ul>
       {collection.length > 11 && (
-        <Button action={actionButton} title={"Load more"} />
+        <Button action={actionButton} title={titleButton} />
       )}
     </div>
   );
