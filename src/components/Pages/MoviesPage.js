@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import Searchbar from "../Searchbar/Searchbar";
 import { CustomLoader } from "../Loader/Loader";
 import { fetchSearchMovies } from "../API";
 import { List } from "../List/List";
 
 export default function MoviesPage() {
+  const location = useLocation();
+  const history = useHistory();
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
 
+  console.log(location);
+  console.log("history", history);
+  const searchMovie = new URLSearchParams(location.search).get("query");
+
   useEffect(() => {
-    if (!query) {
+    if (!searchMovie) {
       return;
     }
 
     const fetchMoviesList = async () => {
       try {
         setLoading(true);
-        const moviesPageList = await fetchSearchMovies(query, currentPage);
+        const moviesPageList = await fetchSearchMovies(
+          searchMovie,
+          currentPage
+        );
 
         setMovies((prevMovies) => [...prevMovies, ...moviesPageList]);
 
@@ -36,9 +46,16 @@ export default function MoviesPage() {
       }
     };
     fetchMoviesList();
-  }, [query, currentPage]);
+  }, [searchMovie, currentPage]);
 
   const handleSubmit = (value) => {
+    if (value !== "") {
+      history.push({
+        ...location,
+        search: `query=${value}`,
+      });
+    }
+
     if (value !== query) {
       setMovies([]);
       setQuery(value);

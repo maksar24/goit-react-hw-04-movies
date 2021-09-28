@@ -10,7 +10,9 @@ export const List = ({ collection, actionButton }) => {
       <ul className={styles.List}>
         <ListItem collection={collection} />
       </ul>
-      {collection.length > 11 && <Button action={actionButton} />}
+      {collection.length > 11 && (
+        <Button action={actionButton} title={"Load more"} />
+      )}
     </div>
   );
 };
