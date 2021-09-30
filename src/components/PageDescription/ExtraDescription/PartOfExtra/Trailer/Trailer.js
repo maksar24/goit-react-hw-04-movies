@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./Trailer.module.css";
 
 export const Trailer = ({ trailer }) => {
@@ -18,4 +19,8 @@ export const Trailer = ({ trailer }) => {
       ))}
     </ul>
   );
+};
+
+Trailer.propTypes = {
+  trailer: PropTypes.array.isRequired,
 };

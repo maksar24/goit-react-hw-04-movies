@@ -12,4 +12,5 @@ export const Button = ({ action, title }) => {
 
 Button.propTypes = {
   action: PropTypes.func,
+  title: PropTypes.string,
 };

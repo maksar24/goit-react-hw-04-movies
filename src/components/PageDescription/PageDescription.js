@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import img from "../../Image/BasicImage.jpg";
 import styles from "./PageDescription.module.css";
 
@@ -42,4 +43,8 @@ export const PageDescription = ({ movie }) => {
       </div>
     </div>
   );
+};
+
+PageDescription.propTypes = {
+  movie: PropTypes.object.isRequired,
 };
