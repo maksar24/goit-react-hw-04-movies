@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  padding: 0 250px;
+}
+
+.navItem {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 23px 15px;
+  font-size: 18px;
+  color: rgb(0 0 0);
+  line-height: 14px;
+  letter-spacing: 0.4px;
+}
+
+.activeNavItem {
+  color: #67c233;
+}
+
+.navItem:hover,
+.navItem:focus {
+  color: #67c233;
+}

@@ -1,13 +1,23 @@
 import React from "react";
+import styles from "./Reviews.module.css";
 
 export const Reviews = ({ reviews }) => {
+  if (reviews.length === 0) {
+    return (
+      <h2 className={styles.error}>
+        We don`t have any reviews for this movie.
+        <br />つ ◕_◕༽つ
+      </h2>
+    );
+  }
+
   return (
     <>
-      <ul>
+      <ul className={styles.gallery}>
         {reviews.map((el) => (
-          <li key={el.id}>
-            <p>{el.author}</p>
-            <p>{el.content}</p>
+          <li className={styles.item} key={el.id}>
+            <p className={styles.author}>{el.author}</p>
+            <p className={styles.content}>{el.content}</p>
           </li>
         ))}
       </ul>

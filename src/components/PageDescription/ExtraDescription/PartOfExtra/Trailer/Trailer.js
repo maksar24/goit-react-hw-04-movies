@@ -1,11 +1,13 @@
 import React from "react";
+import styles from "./Trailer.module.css";
 
 export const Trailer = ({ trailer }) => {
   return (
-    <ul>
+    <ul className={styles.gallery}>
       {trailer.map(({ key }) => (
-        <li key={key}>
+        <li className={styles.item} key={key}>
           <iframe
+            className={styles.video}
             width="560"
             height="315"
             src={`https://www.youtube.com/embed/${key}`}
