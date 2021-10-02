@@ -2,7 +2,6 @@
   "name": "goit-react-hw-04-movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://maksar24.github.io/goit-react-hw-04-movies",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -25,7 +24,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": [
