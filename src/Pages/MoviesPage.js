@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
-import Searchbar from "../Searchbar/Searchbar";
-import { CustomLoader } from "../Loader/Loader";
-import { fetchSearchMovies } from "../API";
-import { List } from "../List/List";
+import Searchbar from "../components/Searchbar/Searchbar";
+import { CustomLoader } from "../components/Loader/Loader";
+import { fetchSearchMovies } from "../service/API";
+import { List } from "../components/List/List";
 
 export default function MoviesPage() {
   const location = useLocation();

@@ -1,8 +1,8 @@
-import { fetchMovieActors } from "../API";
+import { fetchMovieActors } from "../service/API";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { CustomLoader } from "../Loader/Loader";
-import { Cast } from "../PageDescription/ExtraDescription/PartOfExtra/Cast/Cast";
+import { CustomLoader } from "../components/Loader/Loader";
+import { Cast } from "../components/PageDescription/ExtraDescription/PartOfExtra/Cast/Cast";
 
 export default function CastView() {
   const { movieId } = useParams();

@@ -1,21 +1,21 @@
-import { fetchMovieVideos } from "../API";
+import { fetchMovieReviews } from "../service/API";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { CustomLoader } from "../Loader/Loader";
-import { Trailer } from "../PageDescription/ExtraDescription/PartOfExtra/Trailer/Trailer";
+import { CustomLoader } from "../components/Loader/Loader";
+import { Reviews } from "../components/PageDescription/ExtraDescription/PartOfExtra/Reviews/Reviews";
 
-export default function TrailerView() {
+export default function ReviewsView() {
   const { movieId } = useParams();
-  const [trailer, setTrailer] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
 
-    fetchMovieVideos(movieId)
-      .then((trailer) => {
-        setTrailer(trailer);
+    fetchMovieReviews(movieId)
+      .then((reviews) => {
+        setReviews(reviews);
       })
       .catch((error) => {
         setError("Whoops, something went wrong. Enter your request again");
@@ -29,7 +29,7 @@ export default function TrailerView() {
     <>
       {loading && <CustomLoader />}
       {error && <p>{error}</p>}
-      {trailer && <Trailer trailer={trailer} />}
+      {reviews && <Reviews reviews={reviews} />}
     </>
   );
 }

@@ -5,20 +5,16 @@ import AppBar from "./components/AppBar/AppBar";
 import { CustomLoader } from "./components/Loader/Loader";
 
 const HomePage = lazy(() =>
-  import("./components/Pages/HomePage" /* webpackChunkName: "home-page" */)
+  import("./Pages/HomePage" /* webpackChunkName: "home-page" */)
 );
 const MoviesPage = lazy(() =>
-  import("./components/Pages/MoviesPage" /* webpackChunkName: "movie-page" */)
+  import("./Pages/MoviesPage" /* webpackChunkName: "movie-page" */)
 );
 const MovieDetailsPage = lazy(() =>
-  import(
-    "./components/Pages/MovieDetailsPage" /* webpackChunkName: "movieDetails-page" */
-  )
+  import("./Pages/MovieDetailsPage" /* webpackChunkName: "movieDetails-page" */)
 );
 const NotFoundView = lazy(() =>
-  import(
-    "./components/Pages/NotFoundView" /* webpackChunkName: "notFoundToView-page" */
-  )
+  import("./Pages/NotFoundView" /* webpackChunkName: "notFoundToView-page" */)
 );
 
 function App() {
